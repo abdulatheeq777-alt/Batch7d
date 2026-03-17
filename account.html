@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Account — Style It Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0a0a0a;--off:#f4f0eb;--tan:#c8a97a;--rust:#b34a2f;--mid:#6b6560;--r:12px}
+body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--black)}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:70px;backdrop-filter:blur(20px);background:rgba(10,10,10,.9);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--off);text-decoration:none}
+.nav-logo span{color:var(--tan)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(244,240,235,.6);font-size:.8rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--tan)}
+.nav-right{display:flex;gap:6px;align-items:center}
+.nav-icon-btn{background:none;border:none;cursor:pointer;color:var(--off);padding:8px 12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .2s;display:flex;align-items:center;gap:5px;text-decoration:none}
+.nav-icon-btn:hover{background:rgba(255,255,255,.08);color:var(--off)}
+.nav-badge{background:var(--rust);color:#fff;font-size:.6rem;font-weight:700;min-width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.btn-cart-nav{background:var(--tan)!important;color:var(--black)!important;border-radius:50px!important;font-weight:700!important}
+.page-wrap{padding-top:70px;min-height:100vh}
+.page-header{background:var(--black);padding:0}
+.account-hero{display:flex;align-items:center;gap:24px;padding:40px 56px;max-width:1280px;margin:0 auto}
+.avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--tan),var(--rust));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;flex-shrink:0}
+.account-hero-info h1{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--off)}
+.account-hero-info p{font-size:.85rem;color:rgba(244,240,235,.5);margin-top:4px}
+.account-layout{display:grid;grid-template-columns:240px 1fr;gap:32px;max-width:1280px;margin:0 auto;padding:32px 56px 80px;align-items:start}
+.sidebar-nav{background:#fff;border-radius:14px;overflow:hidden;position:sticky;top:90px}
+.sidebar-nav-item{display:flex;align-items:center;gap:12px;padding:14px 20px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.05);transition:background .2s;font-size:.88rem;font-weight:500;color:var(--mid)}
+.sidebar-nav-item:last-child{border-bottom:none}
+.sidebar-nav-item:hover{background:rgba(0,0,0,.03);color:var(--black)}
+.sidebar-nav-item.active{background:rgba(200,169,122,.1);color:var(--black);font-weight:700;border-left:3px solid var(--tan)}
+.sidebar-nav-item span{font-size:1rem}
+.logout-item{color:var(--rust)!important}
+.account-content{}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.section-card{background:#fff;border-radius:14px;padding:28px;margin-bottom:20px}
+.section-card h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--black);margin-bottom:20px}
+/* ORDERS */
+.order-card{border:1.5px solid rgba(0,0,0,.08);border-radius:12px;padding:20px;margin-bottom:14px;transition:border-color .2s}
+.order-card:hover{border-color:var(--tan)}
+.order-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.order-id{font-size:.8rem;font-weight:700;color:var(--mid);letter-spacing:.5px}
+.order-status{font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;text-transform:uppercase}
+.status-delivered{background:rgba(76,175,80,.1);color:#2e7d32}
+.status-shipped{background:rgba(33,150,243,.1);color:#1565c0}
+.status-processing{background:rgba(255,152,0,.1);color:#e65100}
+.order-items{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.order-thumb{width:56px;height:70px;border-radius:8px;object-fit:cover}
+.order-meta{display:flex;gap:20px;font-size:.82rem;color:var(--mid)}
+.order-meta strong{color:var(--black)}
+/* FORM */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.form-group label{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid)}
+.form-group input,.form-group select{background:rgba(0,0,0,.04);border:1.5px solid rgba(0,0,0,.1);border-radius:10px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--black);outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus{border-color:var(--tan)}
+.save-btn{background:var(--black);color:#fff;border:none;border-radius:50px;padding:13px 32px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .2s}
+.save-btn:hover{background:var(--rust)}
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.stat-card{background:#fff;border-radius:12px;padding:20px;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--tan)}
+.stat-lbl{font-size:.75rem;color:var(--mid);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+footer{background:#070707;padding:56px 0 28px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 56px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--mid)}
+@media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}.account-hero,.account-layout{padding-left:20px;padding-right:20px}.account-layout{grid-template-columns:1fr}.sidebar-nav{position:static;display:flex;overflow-x:auto}.sidebar-nav-item{flex-direction:column;gap:4px;font-size:.72rem;padding:12px 14px;white-space:nowrap;border-bottom:none;border-right:1px solid rgba(0,0,0,.05)}.form-row{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Style <span>It Up</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li>
+    <li><a href="wishlist.html">Wishlist</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="wishlist.html" class="nav-icon-btn">🤍 <span id="nav-wish-count" class="nav-badge">0</span></a>
+    <a href="cart.html" class="nav-icon-btn btn-cart-nav">🛒 Cart (<span id="nav-cart-count">0</span>)</a>
+  </div>
+</nav>
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="account-hero">
+      <div class="avatar" id="avatar-initials">?</div>
+      <div class="account-hero-info">
+        <h1 id="user-greeting">Welcome!</h1>
+        <p id="user-email-display">Not signed in</p>
+      </div>
+    </div>
+  </div>
+  <div class="account-layout">
+    <div class="sidebar-nav">
+      <div class="sidebar-nav-item active" onclick="openTab('dashboard')"><span>📊</span>Dashboard</div>
+      <div class="sidebar-nav-item" onclick="openTab('orders')"><span>📦</span>My Orders</div>
+      <div class="sidebar-nav-item" onclick="openTab('profile')"><span>👤</span>Profile</div>
+      <div class="sidebar-nav-item" onclick="openTab('addresses')"><span>📍</span>Addresses</div>
+      <div class="sidebar-nav-item" onclick="location.href='wishlist.html'"><span>🤍</span>Wishlist</div>
+      <div class="sidebar-nav-item" onclick="openTab('settings')"><span>⚙️</span>Settings</div>
+      <div class="sidebar-nav-item logout-item" onclick="doLogout()"><span>🚪</span>Sign Out</div>
+    </div>
+    <div class="account-content">
+
+      <!-- DASHBOARD -->
+      <div class="tab-panel active" id="tab-dashboard">
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-num">3</div><div class="stat-lbl">Orders</div></div>
+          <div class="stat-card"><div class="stat-num" id="wish-stat">0</div><div class="stat-lbl">Wishlist Items</div></div>
+          <div class="stat-card"><div class="stat-num">₹0</div><div class="stat-lbl">Total Spent</div></div>
+        </div>
+        <div class="section-card">
+          <h2>Recent Activity</h2>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:14px;padding:12px;background:rgba(0,0,0,.03);border-radius:10px">
+              <span style="font-size:1.4rem">📦</span>
+              <div><div style="font-size:.88rem;font-weight:600">Order #SIU20250001 delivered</div><div style="font-size:.78rem;color:var(--mid)">March 10, 2025</div></div>
+              <span style="margin-left:auto;font-size:.75rem;background:rgba(76,175,80,.1);color:#2e7d32;padding:4px 10px;border-radius:20px;font-weight:700">Delivered</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:12px;background:rgba(0,0,0,.03);border-radius:10px">
+              <span style="font-size:1.4rem">🤍</span>
+              <div><div style="font-size:.88rem;font-weight:600">3 items in your wishlist</div><div style="font-size:.78rem;color:var(--mid)">2 items on sale now!</div></div>
+              <a href="wishlist.html" style="margin-left:auto;font-size:.75rem;color:var(--rust);font-weight:700;text-decoration:none">View →</a>
+            </div>
+          </div>
+        </div>
+        <div class="section-card">
+          <h2>Quick Actions</h2>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="shop.html" style="background:var(--tan);color:var(--black);border-radius:50px;padding:11px 24px;font-size:.85rem;font-weight:700;text-decoration:none">Shop Now</a>
+            <a href="shop.html?cat=sale" style="background:var(--rust);color:#fff;border-radius:50px;padding:11px 24px;font-size:.85rem;font-weight:700;text-decoration:none">View Sale</a>
+            <a href="wishlist.html" style="background:transparent;color:var(--black);border:1.5px solid rgba(0,0,0,.15);border-radius:50px;padding:11px 24px;font-size:.85rem;font-weight:600;text-decoration:none">My Wishlist</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERS -->
+      <div class="tab-panel" id="tab-orders">
+        <div class="section-card">
+          <h2>My Orders</h2>
+          <div class="order-card">
+            <div class="order-header"><div><div class="order-id">ORDER #SIU20250001</div><div style="font-size:.82rem;color:var(--mid);margin-top:3px">Placed: March 10, 2025 · 2 items</div></div><span class="order-status status-delivered">Delivered</span></div>
+            <div class="order-items">
+              <img class="order-thumb" src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=120" alt="shirt" onerror="this.src='https://picsum.photos/seed/ot1/120/150'"/>
+              <img class="order-thumb" src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=120" alt="pants" onerror="this.src='https://picsum.photos/seed/ot2/120/150'"/>
+            </div>
+            <div class="order-meta"><span>Total: <strong>₹3,098</strong></span><span>Payment: <strong>UPI</strong></span><span>Delivered: <strong>March 13, 2025</strong></span></div>
+          </div>
+          <div class="order-card">
+            <div class="order-header"><div><div class="order-id">ORDER #SIU20250002</div><div style="font-size:.82rem;color:var(--mid);margin-top:3px">Placed: March 14, 2025 · 1 item</div></div><span class="order-status status-shipped">Shipped</span></div>
+            <div class="order-items"><img class="order-thumb" src="https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=120" alt="jacket" onerror="this.src='https://picsum.photos/seed/ot3/120/150'"/></div>
+            <div class="order-meta"><span>Total: <strong>₹3,499</strong></span><span>Payment: <strong>Card</strong></span><span>Expected: <strong>March 18, 2025</strong></span></div>
+          </div>
+          <div class="order-card">
+            <div class="order-header"><div><div class="order-id">ORDER #SIU20250003</div><div style="font-size:.82rem;color:var(--mid);margin-top:3px">Placed: March 16, 2025 · 3 items</div></div><span class="order-status status-processing">Processing</span></div>
+            <div class="order-items">
+              <img class="order-thumb" src="https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=120" alt="tee" onerror="this.src='https://picsum.photos/seed/ot4/120/150'"/>
+              <img class="order-thumb" src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=120" alt="shoes" onerror="this.src='https://picsum.photos/seed/ot5/120/150'"/>
+            </div>
+            <div class="order-meta"><span>Total: <strong>₹2,298</strong></span><span>Payment: <strong>COD</strong></span><span>Expected: <strong>March 20, 2025</strong></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE -->
+      <div class="tab-panel" id="tab-profile">
+        <div class="section-card">
+          <h2>Edit Profile</h2>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input id="pf-fn" placeholder="Rahul"/></div>
+            <div class="form-group"><label>Last Name</label><input id="pf-ln" placeholder="Sharma"/></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" id="pf-em" placeholder="rahul@email.com"/></div>
+          <div class="form-group"><label>Phone</label><input type="tel" id="pf-ph" placeholder="+91 98765 43210"/></div>
+          <div class="form-group"><label>Date of Birth</label><input type="date" id="pf-dob"/></div>
+          <div class="form-group"><label>Gender</label>
+            <select id="pf-gen"><option>Prefer not to say</option><option>Male</option><option>Female</option><option>Non-binary</option></select>
+          </div>
+          <button class="save-btn" onclick="saveProfile()">Save Changes</button>
+        </div>
+        <div class="section-card">
+          <h2>Change Password</h2>
+          <div class="form-group"><label>Current Password</label><input type="password" placeholder="••••••••"/></div>
+          <div class="form-group"><label>New Password</label><input type="password" placeholder="••••••••"/></div>
+          <div class="form-group"><label>Confirm New Password</label><input type="password" placeholder="••••••••"/></div>
+          <button class="save-btn" onclick="toast('Password updated successfully! 🔐')">Update Password</button>
+        </div>
+      </div>
+
+      <!-- ADDRESSES -->
+      <div class="tab-panel" id="tab-addresses">
+        <div class="section-card">
+          <h2>Saved Addresses</h2>
+          <div style="border:1.5px solid rgba(0,0,0,.08);border-radius:12px;padding:18px;margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+              <div style="font-size:.75rem;background:var(--tan);color:var(--black);padding:3px 10px;border-radius:20px;font-weight:700">Default</div>
+              <button onclick="toast('Edit address')" style="background:transparent;border:none;font-size:.82rem;color:var(--rust);font-weight:600;cursor:pointer">Edit</button>
+            </div>
+            <div style="font-size:.92rem;font-weight:600;margin-bottom:4px">Home</div>
+            <div style="font-size:.85rem;color:var(--mid);line-height:1.6">Flat 12B, Raj Residency<br/>MG Road, Banjara Hills<br/>Hyderabad, Telangana — 500034</div>
+          </div>
+          <button onclick="toast('Add new address')" style="background:transparent;border:1.5px dashed rgba(0,0,0,.2);border-radius:12px;width:100%;padding:16px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;color:var(--mid);cursor:pointer;transition:all .2s">+ Add New Address</button>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="tab-panel" id="tab-settings">
+        <div class="section-card">
+          <h2>Notifications</h2>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            ${[['Order Updates','Get notified about your order status'],['Promotions & Offers','Exclusive deals and sale alerts'],['New Arrivals','Be the first to know about new products'],['Wishlist Alerts','Price drops on your saved items']].map(([t,d],i)=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:14px;background:rgba(0,0,0,.03);border-radius:10px"><div><div style="font-size:.88rem;font-weight:600">${t}</div><div style="font-size:.78rem;color:var(--mid)">${d}</div></div><label style="position:relative;display:inline-block;width:44px;height:24px;cursor:pointer"><input type="checkbox" ${i<2?'checked':''} style="display:none" onchange="this.parentElement.querySelector('.slider').style.background=this.checked?'var(--tan)':'rgba(0,0,0,.15)'/><span class="slider" style="position:absolute;inset:0;border-radius:24px;background:${i<2?'var(--tan)':'rgba(0,0,0,.15)'};transition:background .2s"></span><span style="position:absolute;top:2px;left:${i<2?'22px':'2px'};width:20px;height:20px;background:#fff;border-radius:50%;transition:left .2s;box-shadow:0 1px 4px rgba(0,0,0,.2)"></span></label></div>`).join('')}
+          </div>
+        </div>
+        <div class="section-card">
+          <h2>Danger Zone</h2>
+          <button onclick="doLogout()" style="background:transparent;border:1.5px solid var(--rust);color:var(--rust);border-radius:50px;padding:11px 24px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;margin-right:12px">Sign Out</button>
+          <button onclick="toast('Contact support to delete account','err')" style="background:var(--rust);color:#fff;border:none;border-radius:50px;padding:11px 24px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer">Delete Account</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner">
+  <div class="footer-bottom"><span>© 2025 Style It Up. All rights reserved.</span><span>Made with ♥ in India</span></div>
+</div></footer>
+
+<script>
+function getCart(){try{return JSON.parse(sessionStorage.getItem('siu_cart'))||[];}catch{return [];}}
+function getWish(){try{return JSON.parse(sessionStorage.getItem('siu_wish'))||[];}catch{return [];}}
+function updateNav(){const cc=document.getElementById('nav-cart-count');const wc=document.getElementById('nav-wish-count');if(cc)cc.textContent=getCart().reduce((a,i)=>a+i.qty,0);if(wc)wc.textContent=getWish().length;}
+function toast(msg,type){let tc=document.getElementById('tc');if(!tc){tc=document.createElement('div');tc.id='tc';tc.style.cssText='position:fixed;top:90px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none';document.body.appendChild(tc);}const t=document.createElement('div');t.style.cssText='background:#f4f0eb;color:#0a0a0a;padding:12px 20px;border-radius:8px;font-size:.85rem;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.25);opacity:0;transform:translateX(60px);transition:all .35s ease;border-left:4px solid '+(type==='err'?'#b34a2f':'#c8a97a');t.textContent=msg;tc.appendChild(t);requestAnimationFrame(()=>requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateX(0)'}));setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(60px)';setTimeout(()=>t.remove(),400)},3000);}
+
+function openTab(name){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-nav-item').forEach(i=>i.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+function doLogout(){sessionStorage.removeItem('siu_user');location.href='login.html';}
+function saveProfile(){
+  const user=JSON.parse(sessionStorage.getItem('siu_user')||'{}');
+  user.firstName=document.getElementById('pf-fn').value||user.firstName;
+  user.lastName=document.getElementById('pf-ln').value||user.lastName;
+  user.email=document.getElementById('pf-em').value||user.email;
+  sessionStorage.setItem('siu_user',JSON.stringify(user));
+  toast('Profile saved! ✓');loadUser();
+}
+function loadUser(){
+  const user=JSON.parse(sessionStorage.getItem('siu_user')||'null');
+  if(!user){location.href='login.html';return;}
+  const initials=(user.firstName?.[0]||'')+(user.lastName?.[0]||'U');
+  document.getElementById('avatar-initials').textContent=initials.toUpperCase();
+  document.getElementById('user-greeting').textContent='Hello, '+user.firstName+'!';
+  document.getElementById('user-email-display').textContent=user.email;
+  document.getElementById('wish-stat').textContent=getWish().length;
+  if(document.getElementById('pf-fn')) document.getElementById('pf-fn').value=user.firstName||'';
+  if(document.getElementById('pf-ln')) document.getElementById('pf-ln').value=user.lastName||'';
+  if(document.getElementById('pf-em')) document.getElementById('pf-em').value=user.email||'';
+}
+loadUser();updateNav();
+</script>
+</body>
+</html>
