@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Login — Style It Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0a0a0a;--off:#f4f0eb;--tan:#c8a97a;--rust:#b34a2f;--mid:#6b6560;--r:12px}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off);min-height:100vh;display:flex;flex-direction:column}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:70px;backdrop-filter:blur(20px);background:rgba(10,10,10,.9);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--off);text-decoration:none}
+.nav-logo span{color:var(--tan)}
+.nav-right{display:flex;gap:8px}
+.nav-icon-btn{text-decoration:none;color:rgba(244,240,235,.6);font-size:.82rem;padding:8px 14px;border-radius:8px;transition:all .2s;font-weight:500}
+.nav-icon-btn:hover{background:rgba(255,255,255,.08);color:var(--off)}
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:100px 20px 60px;gap:0}
+.auth-wrapper{width:100%;max-width:900px;display:grid;grid-template-columns:1fr 1fr;border-radius:20px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5)}
+.auth-left{background:linear-gradient(135deg,#1a1a1a 0%,#0f0d0a 100%);padding:56px 48px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(255,255,255,.07)}
+.auth-left .tagline{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--tan);font-weight:700;margin-bottom:16px}
+.auth-left h2{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;line-height:1.1;margin-bottom:16px}
+.auth-left h2 em{color:var(--tan);font-style:italic}
+.auth-left p{font-size:.88rem;color:rgba(244,240,235,.5);line-height:1.7;margin-bottom:32px}
+.auth-benefit{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:.85rem;color:rgba(244,240,235,.6)}
+.auth-benefit span{width:32px;height:32px;background:rgba(200,169,122,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
+.auth-right{background:var(--off);padding:48px 44px;display:flex;flex-direction:column;justify-content:center}
+.tab-row{display:flex;gap:0;margin-bottom:32px;border-bottom:1.5px solid rgba(0,0,0,.1)}
+.tab-btn{flex:1;background:transparent;border:none;padding:12px 0;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;color:var(--mid);cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:all .2s}
+.tab-btn.active{color:var(--black);border-bottom-color:var(--tan)}
+.form-panel{display:none}
+.form-panel.active{display:block}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+.form-group input{width:100%;background:rgba(0,0,0,.05);border:1.5px solid rgba(0,0,0,.1);border-radius:10px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--black);outline:none;transition:border-color .2s}
+.form-group input:focus{border-color:var(--tan)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.forgot-row{display:flex;justify-content:flex-end;margin-top:-8px;margin-bottom:16px}
+.forgot-link{font-size:.8rem;color:var(--rust);text-decoration:none;font-weight:600}
+.submit-btn{width:100%;background:var(--black);color:#fff;border:none;border-radius:50px;padding:14px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s;margin-bottom:14px}
+.submit-btn:hover{background:var(--rust)}
+.divider{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--mid);font-size:.78rem}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.1)}
+.social-login{display:flex;gap:10px}
+.social-btn{flex:1;background:transparent;border:1.5px solid rgba(0,0,0,.12);border-radius:10px;padding:11px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--black);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.social-btn:hover{border-color:var(--tan);background:rgba(200,169,122,.06)}
+.terms-txt{font-size:.75rem;color:var(--mid);text-align:center;line-height:1.6}
+.terms-txt a{color:var(--rust);text-decoration:none}
+.error-msg{background:rgba(179,74,47,.1);border:1px solid rgba(179,74,47,.2);color:var(--rust);font-size:.82rem;font-weight:600;padding:10px 14px;border-radius:8px;margin-bottom:14px;display:none}
+.success-msg{background:rgba(76,175,80,.1);border:1px solid rgba(76,175,80,.3);color:#2e7d32;font-size:.82rem;font-weight:600;padding:10px 14px;border-radius:8px;margin-bottom:14px;display:none}
+@media(max-width:700px){nav{padding:0 20px}.auth-wrapper{grid-template-columns:1fr}.auth-left{display:none}.auth-right{padding:36px 28px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Style <span>It Up</span></a>
+  <div class="nav-right">
+    <a href="shop.html" class="nav-icon-btn">Shop</a>
+    <a href="cart.html" class="nav-icon-btn">🛒 Cart</a>
+  </div>
+</nav>
+<main class="main">
+  <div class="auth-wrapper">
+    <div class="auth-left">
+      <div class="tagline">Welcome Back</div>
+      <h2>Your Style,<br/>Your <em>Account</em></h2>
+      <p>Sign in to track orders, manage your wishlist, and access exclusive member deals.</p>
+      <div class="auth-benefit"><span>🚚</span>Track all your orders in one place</div>
+      <div class="auth-benefit"><span>🤍</span>Save and revisit your wishlist anytime</div>
+      <div class="auth-benefit"><span>🎁</span>Exclusive member offers and early access</div>
+      <div class="auth-benefit"><span>↩️</span>Faster returns and exchange process</div>
+    </div>
+    <div class="auth-right">
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="openTab('login')">Sign In</button>
+        <button class="tab-btn" onclick="openTab('register')">Create Account</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="form-panel active" id="panel-login">
+        <div class="error-msg" id="login-err"></div>
+        <div class="success-msg" id="login-ok"></div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="l-email" placeholder="rahul@email.com"/></div>
+        <div class="form-group"><label>Password</label><input type="password" id="l-pass" placeholder="••••••••"/></div>
+        <div class="forgot-row"><a href="#" class="forgot-link">Forgot password?</a></div>
+        <button class="submit-btn" onclick="doLogin()">Sign In →</button>
+        <div class="divider">or continue with</div>
+        <div class="social-login">
+          <button class="social-btn" onclick="socialLogin('Google')">🅖 Google</button>
+          <button class="social-btn" onclick="socialLogin('Facebook')">🅕 Facebook</button>
+        </div>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="form-panel" id="panel-register">
+        <div class="error-msg" id="reg-err"></div>
+        <div class="success-msg" id="reg-ok"></div>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" id="r-fn" placeholder="Rahul"/></div>
+          <div class="form-group"><label>Last Name</label><input type="text" id="r-ln" placeholder="Sharma"/></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" id="r-email" placeholder="rahul@email.com"/></div>
+        <div class="form-group"><label>Phone</label><input type="tel" id="r-phone" placeholder="+91 98765 43210"/></div>
+        <div class="form-group"><label>Password</label><input type="password" id="r-pass" placeholder="Min. 8 characters"/></div>
+        <div class="form-group"><label>Confirm Password</label><input type="password" id="r-pass2" placeholder="Repeat password"/></div>
+        <button class="submit-btn" onclick="doRegister()">Create Account →</button>
+        <p class="terms-txt">By registering, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+function openTab(t){document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',['login','register'][i]===t));document.querySelectorAll('.form-panel').forEach((p,i)=>p.classList.toggle('active',['panel-login','panel-register'][i]==='panel-'+t));}
+function showMsg(id,msg,isErr){const el=document.getElementById(id);el.textContent=msg;el.style.display='block';if(!isErr)setTimeout(()=>el.style.display='none',4000);}
+function doLogin(){
+  const email=document.getElementById('l-email').value.trim();
+  const pass=document.getElementById('l-pass').value;
+  if(!email||!pass){showMsg('login-err','Please fill in all fields.',true);return;}
+  if(!email.includes('@')){showMsg('login-err','Enter a valid email address.',true);return;}
+  // Mock login
+  const stored=JSON.parse(sessionStorage.getItem('siu_user_db')||'[]');
+  const user=stored.find(u=>u.email===email&&u.password===pass);
+  if(user){
+    sessionStorage.setItem('siu_user',JSON.stringify({firstName:user.firstName,lastName:user.lastName,email:user.email}));
+    showMsg('login-ok','Welcome back, '+user.firstName+'! Redirecting…',false);
+    setTimeout(()=>location.href='account.html',1200);
+  } else {
+    // Allow demo login
+    if(email&&pass.length>=3){
+      const demoUser={firstName:email.split('@')[0],lastName:'',email};
+      sessionStorage.setItem('siu_user',JSON.stringify(demoUser));
+      showMsg('login-ok','Signed in! Redirecting…',false);
+      setTimeout(()=>location.href='account.html',1200);
+    } else showMsg('login-err','Invalid email or password.', true);
+  }
+}
+function doRegister(){
+  const fn=document.getElementById('r-fn').value.trim();
+  const ln=document.getElementById('r-ln').value.trim();
+  const email=document.getElementById('r-email').value.trim();
+  const phone=document.getElementById('r-phone').value.trim();
+  const pass=document.getElementById('r-pass').value;
+  const pass2=document.getElementById('r-pass2').value;
+  if(!fn||!ln||!email||!pass){showMsg('reg-err','Please fill in all required fields.',true);return;}
+  if(!email.includes('@')){showMsg('reg-err','Enter a valid email address.',true);return;}
+  if(pass.length<8){showMsg('reg-err','Password must be at least 8 characters.',true);return;}
+  if(pass!==pass2){showMsg('reg-err','Passwords do not match.',true);return;}
+  const db=JSON.parse(sessionStorage.getItem('siu_user_db')||'[]');
+  db.push({firstName:fn,lastName:ln,email,phone,password:pass});
+  sessionStorage.setItem('siu_user_db',JSON.stringify(db));
+  const user={firstName:fn,lastName:ln,email};
+  sessionStorage.setItem('siu_user',JSON.stringify(user));
+  showMsg('reg-ok','Account created! Welcome to Style It Up, '+fn+'! Redirecting…',false);
+  setTimeout(()=>location.href='account.html',1500);
+}
+function socialLogin(provider){
+  const user={firstName:'Style',lastName:'User',email:'user@styleitup.com'};
+  sessionStorage.setItem('siu_user',JSON.stringify(user));
+  location.href='account.html';
+}
+// Auto-redirect if logged in
+if(sessionStorage.getItem('siu_user')) location.href='account.html';
+</script>
+</body>
+</html>
