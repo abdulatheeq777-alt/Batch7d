@@ -1,0 +1,31 @@
+/* ============================================================
+   STYLE IT UP — wishlist.css  (Wishlist page)
+   ============================================================ */
+.page-body { background: var(--off); color: var(--black); }
+
+.wish-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 40px 0 80px;
+}
+
+.remove-wish {
+  position: absolute; top: 10px; right: 10px;
+  background: #fff; border: none; cursor: pointer;
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; box-shadow: 0 2px 10px rgba(0,0,0,.1);
+  color: var(--rust); transition: all .2s;
+}
+.remove-wish:hover { background: var(--rust); color: #fff; }
+
+.empty-wish { text-align: center; padding: 80px 40px; grid-column: span 4; }
+.empty-wish .icon { font-size: 3.5rem; display: block; margin-bottom: 14px; }
+.empty-wish h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--black); margin-bottom: 10px; }
+.empty-wish p  { color: var(--mid); margin-bottom: 24px; }
+
+@media (max-width: 900px) {
+  .wish-grid { grid-template-columns: repeat(2, 1fr); }
+  .empty-wish { grid-column: span 2; }
+}
