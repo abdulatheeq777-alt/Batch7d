@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shop — Style It Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0a0a0a;--off:#f4f0eb;--cream:#ede8e0;--tan:#c8a97a;--rust:#b34a2f;--mid:#6b6560;--white:#fff;--r:12px}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:70px;backdrop-filter:blur(20px);background:rgba(10,10,10,.9);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--off);text-decoration:none;letter-spacing:-.5px}
+.nav-logo span{color:var(--tan)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(244,240,235,.6);font-size:.8rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--tan)}
+.nav-right{display:flex;gap:6px;align-items:center}
+.nav-icon-btn{background:none;border:none;cursor:pointer;color:var(--off);padding:8px 12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .2s;display:flex;align-items:center;gap:5px;text-decoration:none}
+.nav-icon-btn:hover{background:rgba(255,255,255,.08);color:var(--off)}
+.nav-badge{background:var(--rust);color:#fff;font-size:.6rem;font-weight:700;min-width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.btn-cart-nav{background:var(--tan)!important;color:var(--black)!important;border-radius:50px!important;font-weight:700!important}
+.btn-cart-nav:hover{background:#d4b88a!important;color:var(--black)!important}
+
+/* HERO BANNER */
+.shop-hero{padding-top:70px;background:linear-gradient(135deg,#111 0%,#1a1410 100%);border-bottom:1px solid rgba(255,255,255,.07)}
+.shop-hero-inner{max-width:1280px;margin:0 auto;padding:60px 56px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.shop-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;line-height:1.1}
+.shop-hero h1 em{color:var(--tan);font-style:italic}
+.shop-hero p{color:rgba(244,240,235,.55);font-size:.95rem;margin-top:10px;font-weight:300}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.78rem;color:var(--mid);margin-bottom:14px}
+.breadcrumb a{color:var(--mid);text-decoration:none;transition:color .2s}
+.breadcrumb a:hover{color:var(--tan)}
+.breadcrumb span{color:var(--tan)}
+
+/* SEARCH BAR */
+.search-row{max-width:1280px;margin:0 auto;padding:0 56px 32px;display:flex;gap:14px;align-items:center}
+.search-input-wrap{flex:1;position:relative}
+.search-input-wrap input{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 18px 13px 44px;color:var(--off);font-family:'DM Sans',sans-serif;font-size:.92rem;outline:none;transition:border-color .2s}
+.search-input-wrap input:focus{border-color:var(--tan)}
+.search-input-wrap input::placeholder{color:var(--mid)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1rem;color:var(--mid)}
+.sort-select{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 18px;color:var(--off);font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;cursor:pointer;min-width:180px}
+.sort-select option{background:#1a1a1a;color:var(--off)}
+
+/* LAYOUT */
+.shop-layout{max-width:1280px;margin:0 auto;padding:0 56px 80px;display:grid;grid-template-columns:260px 1fr;gap:40px}
+
+/* SIDEBAR FILTERS */
+.filter-sidebar{position:sticky;top:90px;height:fit-content}
+.filter-section{margin-bottom:32px}
+.filter-section h3{font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--off);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08)}
+.filter-option{display:flex;align-items:center;gap:10px;margin-bottom:10px;cursor:pointer}
+.filter-option input[type=checkbox]{width:16px;height:16px;accent-color:var(--tan);cursor:pointer}
+.filter-option label{font-size:.85rem;color:rgba(244,240,235,.7);cursor:pointer;transition:color .2s}
+.filter-option:hover label{color:var(--tan)}
+.filter-option .count{margin-left:auto;font-size:.72rem;color:var(--mid);background:rgba(255,255,255,.06);padding:2px 7px;border-radius:10px}
+.price-row{display:flex;gap:10px;align-items:center}
+.price-row input{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 12px;color:var(--off);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;width:0}
+.price-row input:focus{border-color:var(--tan)}
+.price-row span{color:var(--mid);font-size:.8rem}
+.apply-btn{width:100%;background:var(--tan);color:var(--black);border:none;border-radius:8px;padding:11px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;margin-top:10px;transition:background .2s}
+.apply-btn:hover{background:#d4b88a}
+.clear-filters{width:100%;background:transparent;color:var(--mid);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:9px;font-family:'DM Sans',sans-serif;font-size:.8rem;cursor:pointer;margin-top:8px;transition:all .2s}
+.clear-filters:hover{color:var(--off);border-color:rgba(255,255,255,.2)}
+
+/* PRODUCTS */
+.products-area{}
+.products-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.products-count{font-size:.85rem;color:var(--mid)}
+.products-count strong{color:var(--off);font-weight:600}
+.view-toggle{display:flex;gap:6px}
+.view-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--mid);width:34px;height:34px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s}
+.view-btn.active,.view-btn:hover{background:var(--tan);color:var(--black);border-color:var(--tan)}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.products-grid.list-view{grid-template-columns:1fr}
+.products-grid.list-view .product-card{display:flex;flex-direction:row;height:160px}
+.products-grid.list-view .product-img-wrap{width:130px;flex-shrink:0;aspect-ratio:unset;height:100%}
+.products-grid.list-view .product-info{display:flex;flex-direction:column;justify-content:space-between;padding:16px 18px}
+
+.product-card{background:#fff;border-radius:var(--r);overflow:hidden;cursor:pointer;transition:box-shadow .3s,transform .3s}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.13)}
+.product-img-wrap{position:relative;overflow:hidden;aspect-ratio:3/4}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block}
+.product-card:hover .product-img-wrap img{transform:scale(1.05)}
+.product-tag{position:absolute;top:10px;left:10px;background:var(--rust);color:#fff;font-size:.62rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:4px 9px;border-radius:4px}
+.wish-btn{position:absolute;top:10px;right:10px;background:#fff;border:none;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;box-shadow:0 2px 10px rgba(0,0,0,.1);transition:transform .2s}
+.wish-btn:hover{transform:scale(1.15)}
+.product-info{padding:14px 14px 18px}
+.product-brand{font-size:.67rem;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.product-name{font-size:.9rem;font-weight:600;color:var(--black);margin-bottom:6px}
+.stars{color:var(--tan);font-size:.72rem;margin-bottom:5px}
+.product-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.product-price{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--black)}
+.product-price .old{font-size:.78rem;color:var(--mid);text-decoration:line-through;margin-left:6px;font-family:'DM Sans',sans-serif;font-weight:400}
+.add-btn{background:var(--black);color:#fff;border:none;border-radius:50px;padding:7px 15px;font-size:.72rem;font-weight:700;cursor:pointer;transition:background .2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.add-btn:hover{background:var(--rust)}
+.no-results{text-align:center;padding:80px 20px;color:var(--mid);grid-column:span 3}
+.no-results span{font-size:2.5rem;display:block;margin-bottom:14px}
+
+/* ACTIVE FILTERS */
+.active-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filter-chip{background:rgba(200,169,122,.15);border:1px solid rgba(200,169,122,.3);color:var(--tan);font-size:.75rem;font-weight:600;padding:5px 12px;border-radius:20px;display:flex;align-items:center;gap:6px;cursor:pointer;transition:all .2s}
+.filter-chip:hover{background:rgba(179,74,47,.15);border-color:var(--rust);color:var(--rust)}
+
+/* PAGINATION */
+.pagination{display:flex;gap:8px;justify-content:center;margin-top:48px}
+.page-btn{width:40px;height:40px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--off);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s}
+.page-btn.active,.page-btn:hover{background:var(--tan);border-color:var(--tan);color:var(--black)}
+
+footer{background:#070707;padding:56px 56px 28px;border-top:1px solid rgba(255,255,255,.05);margin-top:0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px;max-width:1280px;margin-left:auto;margin-right:auto}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;color:var(--off);text-decoration:none;display:block;margin-bottom:12px}
+.footer-logo span{color:var(--tan)}
+.footer-brand p{font-size:.83rem;color:var(--mid);line-height:1.7;max-width:260px}
+.footer-col h4{font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--off);font-weight:700;margin-bottom:18px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{color:var(--mid);text-decoration:none;font-size:.83rem;transition:color .2s}
+.footer-col a:hover{color:var(--tan)}
+.footer-bottom{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);font-size:.78rem;color:var(--mid)}
+.social-links{display:flex;gap:12px;margin-top:18px}
+.social-links a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:var(--off);text-decoration:none;font-size:.78rem;font-weight:700;transition:background .2s}
+.social-links a:hover{background:var(--tan);color:var(--black)}
+#back-top{position:fixed;bottom:28px;right:28px;z-index:400;background:var(--tan);color:var(--black);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1rem;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .2s}
+#back-top.show{display:flex}
+#back-top:hover{transform:translateY(-3px)}
+@media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}.shop-hero-inner,.search-row,.shop-layout{padding-left:20px;padding-right:20px}.shop-layout{grid-template-columns:1fr}.filter-sidebar{display:none}.products-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Style <span>It Up</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="shop.html?cat=shirts">Shirts</a></li>
+    <li><a href="shop.html?cat=jackets">Jackets</a></li>
+    <li><a href="shop.html?cat=sale">Sale 🔥</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="wishlist.html" class="nav-icon-btn">🤍 <span id="nav-wish-count" class="nav-badge">0</span></a>
+    <a href="account.html" class="nav-icon-btn">👤 Account</a>
+    <a href="cart.html" class="nav-icon-btn btn-cart-nav">🛒 Cart (<span id="nav-cart-count">0</span>)</a>
+  </div>
+</nav>
+
+<div class="shop-hero">
+  <div class="shop-hero-inner">
+    <div>
+      <div class="breadcrumb"><a href="index.html">Home</a> › <span id="bc-cat">All Products</span></div>
+      <h1>Shop <em id="hero-title">Everything</em></h1>
+      <p>Discover premium menswear — shirts, jackets, bottoms & footwear</p>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap" id="cat-quick-btns">
+      <a href="shop.html?cat=all" class="nav-icon-btn" style="border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:10px 20px;font-size:.78rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase" id="qb-all">All</a>
+      <a href="shop.html?cat=shirts" class="nav-icon-btn" style="border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:10px 20px;font-size:.78rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase" id="qb-shirts">Shirts</a>
+      <a href="shop.html?cat=jackets" class="nav-icon-btn" style="border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:10px 20px;font-size:.78rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase" id="qb-jackets">Jackets</a>
+      <a href="shop.html?cat=bottoms" class="nav-icon-btn" style="border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:10px 20px;font-size:.78rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase" id="qb-bottoms">Bottoms</a>
+      <a href="shop.html?cat=footwear" class="nav-icon-btn" style="border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:10px 20px;font-size:.78rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase" id="qb-footwear">Footwear</a>
+      <a href="shop.html?cat=sale" class="nav-icon-btn" style="border:1px solid rgba(179,74,47,.4);border-radius:50px;padding:10px 20px;font-size:.78rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--rust)" id="qb-sale">Sale 🔥</a>
+    </div>
+  </div>
+  <div class="search-row">
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Search for shirts, jackets, jeans, shoes…" oninput="applyFilters()"/>
+    </div>
+    <select class="sort-select" id="sort-select" onchange="applyFilters()">
+      <option value="default">Sort: Featured</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating">Best Rated</option>
+      <option value="newest">Newest First</option>
+    </select>
+  </div>
+</div>
+
+<div class="shop-layout">
+  <!-- SIDEBAR -->
+  <aside class="filter-sidebar">
+    <div class="filter-section">
+      <h3>Category</h3>
+      <label class="filter-option"><input type="checkbox" value="shirts" onchange="applyFilters()"/> <label>Shirts & Tops</label><span class="count">5</span></label>
+      <label class="filter-option"><input type="checkbox" value="jackets" onchange="applyFilters()"/> <label>Jackets</label><span class="count">2</span></label>
+      <label class="filter-option"><input type="checkbox" value="bottoms" onchange="applyFilters()"/> <label>Bottoms</label><span class="count">3</span></label>
+      <label class="filter-option"><input type="checkbox" value="footwear" onchange="applyFilters()"/> <label>Footwear</label><span class="count">2</span></label>
+    </div>
+    <div class="filter-section">
+      <h3>Price Range</h3>
+      <div class="price-row">
+        <input type="number" id="price-min" placeholder="₹ Min" min="0"/>
+        <span>–</span>
+        <input type="number" id="price-max" placeholder="₹ Max" min="0"/>
+      </div>
+      <button class="apply-btn" onclick="applyFilters()">Apply Price</button>
+    </div>
+    <div class="filter-section">
+      <h3>Size</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <label style="cursor:pointer"><input type="checkbox" value="S" onchange="applyFilters()" style="display:none"/><span class="size-chip" id="sc-S">S</span></label>
+        <label style="cursor:pointer"><input type="checkbox" value="M" onchange="applyFilters()" style="display:none"/><span class="size-chip" id="sc-M">M</span></label>
+        <label style="cursor:pointer"><input type="checkbox" value="L" onchange="applyFilters()" style="display:none"/><span class="size-chip" id="sc-L">L</span></label>
+        <label style="cursor:pointer"><input type="checkbox" value="XL" onchange="applyFilters()" style="display:none"/><span class="size-chip" id="sc-XL">XL</span></label>
+        <label style="cursor:pointer"><input type="checkbox" value="XXL" onchange="applyFilters()" style="display:none"/><span class="size-chip" id="sc-XXL">XXL</span></label>
+      </div>
+    </div>
+    <div class="filter-section">
+      <h3>Discount</h3>
+      <label class="filter-option"><input type="checkbox" id="sale-only" onchange="applyFilters()"/> <label>On Sale Only</label></label>
+    </div>
+    <button class="clear-filters" onclick="clearAllFilters()">✕ Clear All Filters</button>
+  </aside>
+
+  <!-- PRODUCTS -->
+  <div class="products-area">
+    <div class="active-filters" id="active-filters"></div>
+    <div class="products-header">
+      <div class="products-count">Showing <strong id="results-count">0</strong> products</div>
+      <div class="view-toggle">
+        <button class="view-btn active" id="grid-btn" onclick="setView('grid')" title="Grid">⊞</button>
+        <button class="view-btn" id="list-btn" onclick="setView('list')" title="List">☰</button>
+      </div>
+    </div>
+    <div class="products-grid" id="products-grid"></div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Style <span>It Up</span></a>
+        <p>Premium menswear for the modern Indian man.</p>
+        <div class="social-links"><a href="#">IG</a><a href="#">TW</a><a href="#">FB</a><a href="#">YT</a></div>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><ul>
+        <li><a href="shop.html">All Products</a></li><li><a href="shop.html?cat=shirts">Shirts</a></li>
+        <li><a href="shop.html?cat=jackets">Jackets</a></li><li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+        <li><a href="shop.html?cat=sale">Sale</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Help</h4><ul>
+        <li><a href="account.html">My Account</a></li><li><a href="cart.html">View Cart</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li><li><a href="contact.html">Contact Us</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="about.html">About Us</a></li><li><a href="contact.html">Press</a></li>
+        <li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Style It Up.</span><span>Made with ♥ in India</span></div>
+  </div>
+</footer>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<style>
+.size-chip{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;border-radius:8px;border:1.5px solid rgba(255,255,255,.15);background:transparent;color:rgba(244,240,235,.7);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;padding:0 8px}
+input[type=checkbox]:checked + .size-chip{background:var(--tan);border-color:var(--tan);color:var(--black)}
+</style>
+
+<script>
+const PRODUCTS=[
+  {id:1,name:'Premium Linen Shirt',brand:'Style It Up',cat:'shirts',price:1299,old:1899,tag:'New',stars:5,sizes:['S','M','L','XL','XXL'],img:'https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:2,name:'Classic Bomber Jacket',brand:'Style It Up',cat:'jackets',price:3499,old:4999,tag:'Hot',stars:4,sizes:['S','M','L','XL'],img:'https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:3,name:'Slim Fit Chinos',brand:'Style It Up',cat:'bottoms',price:1799,old:null,tag:null,stars:5,sizes:['28','30','32','34','36'],img:'https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:4,name:'Oversized Graphic Tee',brand:'Style It Up',cat:'shirts',price:699,old:999,tag:'Sale',stars:4,sizes:['S','M','L','XL','XXL'],img:'https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:5,name:'Canvas Low-Top Sneakers',brand:'Style It Up',cat:'footwear',price:1599,old:2199,tag:'Sale',stars:4,sizes:['6','7','8','9','10','11'],img:'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:6,name:'Denim Trucker Jacket',brand:'Style It Up',cat:'jackets',price:2899,old:3999,tag:'Sale',stars:5,sizes:['S','M','L','XL'],img:'https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:7,name:'Relaxed Polo Shirt',brand:'Style It Up',cat:'shirts',price:899,old:null,tag:null,stars:4,sizes:['S','M','L','XL','XXL'],img:'https://images.pexels.com/photos/1192609/pexels-photo-1192609.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:8,name:'Tapered Cargo Pants',brand:'Style It Up',cat:'bottoms',price:1499,old:1999,tag:'Sale',stars:4,sizes:['28','30','32','34','36'],img:'https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:9,name:'Street Essential Hoodie',brand:'Style It Up',cat:'shirts',price:2199,old:null,tag:'New',stars:5,sizes:['S','M','L','XL'],img:'https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:10,name:'Slim Fit Dark Jeans',brand:'Style It Up',cat:'bottoms',price:1699,old:null,tag:null,stars:4,sizes:['28','30','32','34'],img:'https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:11,name:'Casual Oxford Shirt',brand:'Style It Up',cat:'shirts',price:1099,old:null,tag:null,stars:5,sizes:['S','M','L','XL','XXL'],img:'https://images.pexels.com/photos/769733/pexels-photo-769733.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  {id:12,name:'Leather Derby Shoes',brand:'Style It Up',cat:'footwear',price:3299,old:null,tag:null,stars:5,sizes:['6','7','8','9','10'],img:'https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg?auto=compress&cs=tinysrgb&w=500'},
+];
+
+function fmt(n){return '₹'+n.toLocaleString('en-IN')}
+function star(n){return '★'.repeat(n)+'☆'.repeat(5-n)}
+function getCart(){try{return JSON.parse(sessionStorage.getItem('siu_cart'))||[];}catch{return [];}}
+function saveCart(c){sessionStorage.setItem('siu_cart',JSON.stringify(c));}
+function getWish(){try{return JSON.parse(sessionStorage.getItem('siu_wish'))||[];}catch{return [];}}
+function saveWish(w){sessionStorage.setItem('siu_wish',JSON.stringify(w));}
+
+function updateNav(){
+  const cc=document.getElementById('nav-cart-count');const wc=document.getElementById('nav-wish-count');
+  if(cc) cc.textContent=getCart().reduce((a,i)=>a+i.qty,0);
+  if(wc) wc.textContent=getWish().length;
+}
+function toast(msg,type){
+  let tc=document.getElementById('tc');if(!tc){tc=document.createElement('div');tc.id='tc';tc.style.cssText='position:fixed;top:90px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none';document.body.appendChild(tc);}
+  const t=document.createElement('div');t.style.cssText='background:#f4f0eb;color:#0a0a0a;padding:12px 20px;border-radius:8px;font-size:.85rem;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.25);opacity:0;transform:translateX(60px);transition:all .35s ease;border-left:4px solid '+(type==='err'?'#b34a2f':'#c8a97a');
+  t.textContent=msg;tc.appendChild(t);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateX(0)'}));
+  setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(60px)';setTimeout(()=>t.remove(),400)},3000);
+}
+
+let curView='grid', curPage=1, perPage=9;
+
+function getCatFromURL(){const p=new URLSearchParams(location.search);return p.get('cat')||'all';}
+
+function applyFilters(){
+  let list=[...PRODUCTS];
+  const q=document.getElementById('search-input').value.toLowerCase().trim();
+  const cats=[...document.querySelectorAll('.filter-sidebar input[type=checkbox][value]')].filter(c=>['shirts','jackets','bottoms','footwear'].includes(c.value)&&c.checked).map(c=>c.value);
+  const saleOnly=document.getElementById('sale-only').checked;
+  const minP=parseFloat(document.getElementById('price-min').value)||0;
+  const maxP=parseFloat(document.getElementById('price-max').value)||999999;
+  const selSizes=[...document.querySelectorAll('.filter-sidebar input[type=checkbox]')].filter(c=>!['shirts','jackets','bottoms','footwear'].includes(c.value)&&c.value&&c.checked).map(c=>c.value);
+  const sort=document.getElementById('sort-select').value;
+
+  if(q) list=list.filter(p=>p.name.toLowerCase().includes(q)||p.cat.includes(q));
+  if(cats.length) list=list.filter(p=>cats.includes(p.cat));
+  if(saleOnly) list=list.filter(p=>p.tag==='Sale');
+  list=list.filter(p=>p.price>=minP&&p.price<=maxP);
+  if(selSizes.length) list=list.filter(p=>p.sizes.some(s=>selSizes.includes(s)));
+
+  if(sort==='price-asc') list.sort((a,b)=>a.price-b.price);
+  else if(sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+  else if(sort==='rating') list.sort((a,b)=>b.stars-a.stars);
+
+  renderProducts(list);
+  updateActiveFilters(cats,saleOnly,q,selSizes);
+}
+
+function renderProducts(list){
+  const grid=document.getElementById('products-grid');
+  document.getElementById('results-count').textContent=list.length;
+  if(!list.length){grid.innerHTML=`<div class="no-results"><span>🔍</span>No products found.<br/><a href="shop.html" style="color:var(--tan);text-decoration:none;font-weight:600">Clear filters →</a></div>`;document.getElementById('pagination').innerHTML='';return;}
+  const wish=getWish();
+  grid.innerHTML=list.map(p=>{
+    const iw=wish.some(w=>w.id===p.id);
+    return `<div class="product-card">
+      <div class="product-img-wrap" onclick="location.href='product.html?id=${p.id}'">
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://picsum.photos/seed/p${p.id}/500/650'"/>
+        ${p.tag?`<span class="product-tag">${p.tag}</span>`:''}
+        <button class="wish-btn" onclick="event.stopPropagation();toggleWish(${p.id})" id="wb${p.id}" title="Wishlist">${iw?'❤️':'🤍'}</button>
+      </div>
+      <div class="product-info" onclick="location.href='product.html?id=${p.id}'">
+        <div class="stars">${star(p.stars)}</div>
+        <div class="product-brand">${p.brand}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-footer">
+          <div class="product-price">${fmt(p.price)}${p.old?`<span class="old">${fmt(p.old)}</span>`:''}</div>
+          <button class="add-btn" onclick="event.stopPropagation();quickAdd(${p.id})">+ Add</button>
+        </div>
+      </div>
+    </div>`;}).join('');
+}
+
+function toggleWish(id){
+  const p=PRODUCTS.find(x=>x.id===id);if(!p) return;
+  let w=getWish();const idx=w.findIndex(x=>x.id===id);
+  if(idx>-1){w.splice(idx,1);toast('Removed from wishlist');}
+  else{w.push(p);toast(p.name+' saved 🤍');}
+  saveWish(w);updateNav();
+  const btn=document.getElementById('wb'+id);
+  if(btn){const iw=w.some(x=>x.id===id);btn.textContent=iw?'❤️':'🤍';}
+}
+
+function quickAdd(id){
+  const p=PRODUCTS.find(x=>x.id===id);if(!p) return;
+  location.href='product.html?id='+id;
+}
+
+function setView(v){
+  curView=v;
+  const g=document.getElementById('products-grid');
+  g.classList.toggle('list-view',v==='list');
+  document.getElementById('grid-btn').classList.toggle('active',v==='grid');
+  document.getElementById('list-btn').classList.toggle('active',v==='list');
+}
+
+function updateActiveFilters(cats,sale,q,sizes){
+  const af=document.getElementById('active-filters');
+  let chips='';
+  cats.forEach(c=>{chips+=`<span class="filter-chip" onclick="removeCatFilter('${c}')">${c} ✕</span>`;});
+  if(sale) chips+=`<span class="filter-chip" onclick="document.getElementById('sale-only').checked=false;applyFilters()">On Sale ✕</span>`;
+  if(q) chips+=`<span class="filter-chip" onclick="document.getElementById('search-input').value='';applyFilters()">Search: "${q}" ✕</span>`;
+  sizes.forEach(s=>{chips+=`<span class="filter-chip">Size: ${s} ✕</span>`;});
+  af.innerHTML=chips;
+}
+
+function removeCatFilter(cat){
+  const cb=document.querySelector(`.filter-sidebar input[value="${cat}"]`);
+  if(cb){cb.checked=false;applyFilters();}
+}
+
+function clearAllFilters(){
+  document.querySelectorAll('.filter-sidebar input[type=checkbox]').forEach(c=>c.checked=false);
+  document.getElementById('price-min').value='';
+  document.getElementById('price-max').value='';
+  document.getElementById('search-input').value='';
+  history.replaceState(null,'',location.pathname);
+  applyFilters();
+}
+
+// Init from URL param
+(function init(){
+  const cat=getCatFromURL();
+  if(cat&&cat!=='all'){
+    const bc=document.getElementById('bc-cat');
+    const ht=document.getElementById('hero-title');
+    if(bc) bc.textContent=cat.charAt(0).toUpperCase()+cat.slice(1);
+    if(ht) ht.textContent=cat.charAt(0).toUpperCase()+cat.slice(1);
+    if(cat==='sale'){
+      const so=document.getElementById('sale-only');if(so) so.checked=true;
+    } else {
+      const cb=document.querySelector(`.filter-sidebar input[value="${cat}"]`);
+      if(cb) cb.checked=true;
+    }
+    const qb=document.getElementById('qb-'+cat);
+    if(qb){qb.style.background='rgba(200,169,122,.15)';qb.style.borderColor='rgba(200,169,122,.4)';qb.style.color='var(--tan)';}
+  } else {
+    const qb=document.getElementById('qb-all');
+    if(qb){qb.style.background='rgba(200,169,122,.15)';qb.style.borderColor='rgba(200,169,122,.4)';qb.style.color='var(--tan)';}
+  }
+  applyFilters();
+  updateNav();
+})();
+window.addEventListener('scroll',()=>{document.getElementById('back-top').classList.toggle('show',scrollY>400)});
+</script>
+</body>
+</html>
