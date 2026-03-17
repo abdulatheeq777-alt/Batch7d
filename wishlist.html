@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wishlist — Style It Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0a0a0a;--off:#f4f0eb;--cream:#ede8e0;--tan:#c8a97a;--rust:#b34a2f;--mid:#6b6560;--r:12px}
+body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--black)}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:70px;backdrop-filter:blur(20px);background:rgba(10,10,10,.9);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--off);text-decoration:none;letter-spacing:-.5px}
+.nav-logo span{color:var(--tan)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(244,240,235,.6);font-size:.8rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--tan)}
+.nav-right{display:flex;gap:6px;align-items:center}
+.nav-icon-btn{background:none;border:none;cursor:pointer;color:var(--off);padding:8px 12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .2s;display:flex;align-items:center;gap:5px;text-decoration:none}
+.nav-icon-btn:hover{background:rgba(255,255,255,.08);color:var(--off)}
+.nav-badge{background:var(--rust);color:#fff;font-size:.6rem;font-weight:700;min-width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.btn-cart-nav{background:var(--tan)!important;color:var(--black)!important;border-radius:50px!important;font-weight:700!important}
+.page-wrap{padding-top:70px;min-height:80vh}
+.container{max-width:1280px;margin:0 auto;padding:0 56px}
+.page-header{background:var(--black);color:var(--off);padding:48px 0 40px}
+.page-header h1{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.78rem;color:var(--mid);margin-bottom:12px}
+.breadcrumb a{color:var(--mid);text-decoration:none}
+.breadcrumb a:hover{color:var(--tan)}
+.breadcrumb span{color:var(--tan)}
+.wish-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:40px 0 80px}
+.product-card{background:#fff;border-radius:var(--r);overflow:hidden;cursor:pointer;transition:box-shadow .3s,transform .3s;position:relative}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.13)}
+.product-img-wrap{position:relative;overflow:hidden;aspect-ratio:3/4}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block}
+.product-card:hover .product-img-wrap img{transform:scale(1.05)}
+.product-tag{position:absolute;top:10px;left:10px;background:var(--rust);color:#fff;font-size:.62rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:4px 9px;border-radius:4px}
+.remove-wish{position:absolute;top:10px;right:10px;background:#fff;border:none;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;box-shadow:0 2px 10px rgba(0,0,0,.1);transition:all .2s;color:var(--rust)}
+.remove-wish:hover{background:var(--rust);color:#fff}
+.product-info{padding:14px 14px 18px}
+.product-brand{font-size:.67rem;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.product-name{font-size:.9rem;font-weight:600;color:var(--black);margin-bottom:8px}
+.stars{color:var(--tan);font-size:.72rem;margin-bottom:5px}
+.product-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.product-price{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--black)}
+.product-price .old{font-size:.78rem;color:var(--mid);text-decoration:line-through;margin-left:6px;font-family:'DM Sans',sans-serif;font-weight:400}
+.add-btn{background:var(--black);color:#fff;border:none;border-radius:50px;padding:7px 15px;font-size:.72rem;font-weight:700;cursor:pointer;transition:background .2s;font-family:'DM Sans',sans-serif}
+.add-btn:hover{background:var(--rust)}
+.empty-wish{text-align:center;padding:80px 40px;grid-column:span 4}
+.empty-wish span{font-size:3.5rem;display:block;margin-bottom:14px}
+.empty-wish h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--black);margin-bottom:10px}
+.empty-wish p{color:var(--mid);margin-bottom:24px}
+footer{background:#070707;padding:56px 0 28px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 56px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;color:var(--off);text-decoration:none;display:block;margin-bottom:12px}
+.footer-logo span{color:var(--tan)}
+.footer-brand p{font-size:.83rem;color:var(--mid);line-height:1.7;max-width:260px}
+.footer-col h4{font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--off);font-weight:700;margin-bottom:18px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{color:var(--mid);text-decoration:none;font-size:.83rem;transition:color .2s}
+.footer-col a:hover{color:var(--tan)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);font-size:.78rem;color:var(--mid)}
+.social-links{display:flex;gap:12px;margin-top:18px}
+.social-links a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:var(--off);text-decoration:none;font-size:.78rem;font-weight:700;transition:background .2s}
+.social-links a:hover{background:var(--tan);color:var(--black)}
+@media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}.container{padding:0 20px}.wish-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.footer-inner{padding:0 20px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Style <span>It Up</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li>
+    <li><a href="shop.html?cat=shirts">Shirts</a></li><li><a href="shop.html?cat=sale">Sale 🔥</a></li>
+    <li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="wishlist.html" class="nav-icon-btn">🤍 <span id="nav-wish-count" class="nav-badge">0</span></a>
+    <a href="account.html" class="nav-icon-btn">👤 Account</a>
+    <a href="cart.html" class="nav-icon-btn btn-cart-nav">🛒 Cart (<span id="nav-cart-count">0</span>)</a>
+  </div>
+</nav>
+<div class="page-wrap">
+  <div class="page-header"><div class="container"><div class="breadcrumb"><a href="index.html">Home</a> › <span>Wishlist</span></div><h1>My Wishlist 🤍</h1></div></div>
+  <div class="container"><div class="wish-grid" id="wish-grid"></div></div>
+</div>
+<footer><div class="footer-inner">
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="footer-logo">Style <span>It Up</span></a><p>Premium menswear for the modern Indian man.</p><div class="social-links"><a>IG</a><a>TW</a><a>FB</a><a>YT</a></div></div>
+    <div class="footer-col"><h4>Shop</h4><ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html?cat=shirts">Shirts</a></li><li><a href="shop.html?cat=sale">Sale</a></li></ul></div>
+    <div class="footer-col"><h4>Help</h4><ul><li><a href="account.html">My Account</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#">Privacy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 Style It Up.</span><span>Made with ♥ in India</span></div>
+</div></footer>
+<script>
+function fmt(n){return '₹'+n.toLocaleString('en-IN')}
+function star(n){return '★'.repeat(n)+'☆'.repeat(5-n)}
+function getCart(){try{return JSON.parse(sessionStorage.getItem('siu_cart'))||[];}catch{return [];}}
+function saveCart(c){sessionStorage.setItem('siu_cart',JSON.stringify(c));}
+function getWish(){try{return JSON.parse(sessionStorage.getItem('siu_wish'))||[];}catch{return [];}}
+function saveWish(w){sessionStorage.setItem('siu_wish',JSON.stringify(w));}
+function updateNav(){const cc=document.getElementById('nav-cart-count');const wc=document.getElementById('nav-wish-count');if(cc)cc.textContent=getCart().reduce((a,i)=>a+i.qty,0);if(wc)wc.textContent=getWish().length;}
+function toast(msg,type){let tc=document.getElementById('tc');if(!tc){tc=document.createElement('div');tc.id='tc';tc.style.cssText='position:fixed;top:90px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none';document.body.appendChild(tc);}const t=document.createElement('div');t.style.cssText='background:#f4f0eb;color:#0a0a0a;padding:12px 20px;border-radius:8px;font-size:.85rem;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.25);opacity:0;transform:translateX(60px);transition:all .35s ease;border-left:4px solid '+(type==='err'?'#b34a2f':'#c8a97a');t.textContent=msg;tc.appendChild(t);requestAnimationFrame(()=>requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateX(0)'}));setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(60px)';setTimeout(()=>t.remove(),400)},3000);}
+function removeWish(id){let w=getWish();w=w.filter(x=>x.id!==id);saveWish(w);updateNav();render();toast('Removed from wishlist');}
+function addCart(id){
+  const w=getWish();const p=w.find(x=>x.id===id);if(!p) return;
+  location.href='product.html?id='+id;
+}
+function render(){
+  updateNav();
+  const w=getWish();const g=document.getElementById('wish-grid');
+  if(!w.length){g.innerHTML=`<div class="empty-wish"><span>🤍</span><h2>Your wishlist is empty</h2><p>Save items you love and come back to them later.</p><a href="shop.html" style="background:var(--tan);color:var(--black);border:none;border-radius:50px;padding:14px 34px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;text-decoration:none;display:inline-block">Browse Products →</a></div>`;return;}
+  g.innerHTML=w.map(p=>`<div class="product-card">
+    <div class="product-img-wrap" onclick="location.href='product.html?id=${p.id}'">
+      <img src="${p.img}" alt="${p.name}" onerror="this.src='https://picsum.photos/seed/wi${p.id}/500/650'"/>
+      ${p.tag?`<span class="product-tag">${p.tag}</span>`:''}
+      <button class="remove-wish" onclick="event.stopPropagation();removeWish(${p.id})" title="Remove">✕</button>
+    </div>
+    <div class="product-info" onclick="location.href='product.html?id=${p.id}'">
+      <div class="stars">${star(p.stars||4)}</div>
+      <div class="product-brand">${p.brand||'Style It Up'}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-footer">
+        <div class="product-price">${fmt(p.price)}${p.old?`<span class="old">${fmt(p.old)}</span>`:''}</div>
+        <button class="add-btn" onclick="event.stopPropagation();addCart(${p.id})">View →</button>
+      </div>
+    </div>
+  </div>`).join('');
+}
+render();
+</script>
+</body>
+</html>
