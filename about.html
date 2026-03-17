@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us — Style It Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0a0a0a;--off:#f4f0eb;--tan:#c8a97a;--rust:#b34a2f;--mid:#6b6560;--r:12px}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:70px;backdrop-filter:blur(20px);background:rgba(10,10,10,.9);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--off);text-decoration:none}
+.nav-logo span{color:var(--tan)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(244,240,235,.6);font-size:.8rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--tan)}
+.nav-right{display:flex;gap:6px}
+.nav-icon-btn{background:none;border:none;cursor:pointer;color:var(--off);padding:8px 12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .2s;display:flex;align-items:center;gap:5px;text-decoration:none}
+.nav-icon-btn:hover{background:rgba(255,255,255,.08);color:var(--off)}
+.nav-badge{background:var(--rust);color:#fff;font-size:.6rem;font-weight:700;min-width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.btn-cart-nav{background:var(--tan)!important;color:var(--black)!important;border-radius:50px!important;font-weight:700!important}
+
+/* HERO */
+.about-hero{padding:130px 56px 90px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-eyebrow{font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--tan);font-weight:700;margin-bottom:16px}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:900;line-height:1.05;margin-bottom:24px}
+.hero-title em{color:var(--tan);font-style:italic}
+.hero-desc{font-size:.96rem;color:rgba(244,240,235,.55);line-height:1.8;font-weight:300;margin-bottom:36px}
+.hero-ctas{display:flex;gap:14px}
+.btn-primary{background:var(--tan);color:var(--black);border:none;border-radius:50px;padding:14px 34px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:#d4b88a;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--off);border:1.5px solid rgba(244,240,235,.2);border-radius:50px;padding:13px 28px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block}
+.btn-ghost:hover{border-color:var(--tan);color:var(--tan)}
+.hero-img{border-radius:20px;overflow:hidden;height:500px;position:relative}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.3) 0%,transparent 60%)}
+
+/* STATS STRIP */
+.stats-strip{background:var(--tan);padding:44px 56px;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-item{text-align:center;padding:0 20px;border-right:1px solid rgba(10,10,10,.15)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--black);line-height:1}
+.stat-lbl{font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(10,10,10,.65);margin-top:6px}
+
+/* STORY */
+.story{max-width:1280px;margin:0 auto;padding:90px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-imgs{position:relative;height:520px}
+.story-img1{position:absolute;top:0;left:0;width:68%;height:80%;border-radius:16px;overflow:hidden}
+.story-img1 img{width:100%;height:100%;object-fit:cover;display:block}
+.story-img2{position:absolute;bottom:0;right:0;width:50%;height:55%;border-radius:16px;overflow:hidden;border:4px solid var(--black)}
+.story-img2 img{width:100%;height:100%;object-fit:cover;display:block}
+.story-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--tan);color:var(--black);width:90px;height:90px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;z-index:2;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.story-badge .yr{font-size:1.5rem;line-height:1}
+.story-badge .since{font-size:.55rem;letter-spacing:1px;text-transform:uppercase;line-height:1.4}
+.story-text .section-label{font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--tan);font-weight:700;margin-bottom:10px}
+.story-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;margin-bottom:20px;line-height:1.15}
+.story-text p{font-size:.92rem;color:rgba(244,240,235,.55);line-height:1.8;margin-bottom:16px}
+
+/* VALUES */
+.values{background:#111;padding:90px 0}
+.values-inner{max-width:1280px;margin:0 auto;padding:0 56px}
+.values-header{text-align:center;margin-bottom:56px}
+.values-header .section-label{font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--tan);font-weight:700;margin-bottom:10px}
+.values-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.value-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:36px 28px;transition:transform .3s,border-color .3s}
+.value-card:hover{transform:translateY(-6px);border-color:rgba(200,169,122,.3)}
+.value-icon{font-size:2.2rem;margin-bottom:18px}
+.value-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:12px;color:var(--off)}
+.value-desc{font-size:.88rem;color:rgba(244,240,235,.5);line-height:1.75}
+
+/* TEAM */
+.team{max-width:1280px;margin:0 auto;padding:90px 56px}
+.team-header{margin-bottom:52px}
+.team-header .section-label{font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--tan);font-weight:700;margin-bottom:10px}
+.team-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.team-card{text-align:center}
+.team-photo{border-radius:16px;overflow:hidden;aspect-ratio:1;margin-bottom:16px}
+.team-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.team-card:hover .team-photo img{transform:scale(1.04)}
+.team-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--off);margin-bottom:4px}
+.team-role{font-size:.78rem;color:var(--tan);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:8px}
+.team-bio{font-size:.82rem;color:rgba(244,240,235,.45);line-height:1.65}
+
+/* PRESS */
+.press{background:#0e0e0e;padding:60px 0;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.press-inner{max-width:1280px;margin:0 auto;padding:0 56px;text-align:center}
+.press-label{font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--mid);font-weight:600;margin-bottom:28px}
+.press-logos{display:flex;gap:40px;align-items:center;justify-content:center;flex-wrap:wrap}
+.press-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:rgba(244,240,235,.2);letter-spacing:1px;transition:color .2s;cursor:default}
+.press-logo:hover{color:rgba(244,240,235,.45)}
+
+/* CTA BANNER */
+.cta-banner{padding:90px 56px;text-align:center;background:linear-gradient(135deg,#1a110a 0%,#0a0a0a 100%)}
+.cta-banner .section-label{font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--tan);font-weight:700;margin-bottom:14px}
+.cta-banner h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;margin-bottom:16px}
+.cta-banner h2 em{color:var(--tan);font-style:italic}
+.cta-banner p{font-size:.95rem;color:rgba(244,240,235,.5);max-width:480px;margin:0 auto 36px;line-height:1.7}
+.cta-banner .ctas{display:flex;gap:14px;justify-content:center}
+
+footer{background:#070707;padding:56px 56px 28px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;max-width:1280px;margin:0 auto 44px}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;color:var(--off);text-decoration:none;display:block;margin-bottom:12px}
+.footer-logo span{color:var(--tan)}
+.footer-brand p{font-size:.83rem;color:var(--mid);line-height:1.7;max-width:260px}
+.footer-col h4{font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--off);font-weight:700;margin-bottom:18px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{color:var(--mid);text-decoration:none;font-size:.83rem;transition:color .2s}
+.footer-col a:hover{color:var(--tan)}
+.footer-bottom{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);font-size:.78rem;color:var(--mid)}
+.social-links{display:flex;gap:12px;margin-top:18px}
+.social-links a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:var(--off);text-decoration:none;font-size:.78rem;font-weight:700;transition:background .2s}
+.social-links a:hover{background:var(--tan);color:var(--black)}
+#back-top{position:fixed;bottom:28px;right:28px;z-index:400;background:var(--tan);color:var(--black);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1rem;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .2s}
+#back-top.show{display:flex}
+#back-top:hover{transform:translateY(-3px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeUp .7s ease both}
+@media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}.about-hero,.story,.team,.team-grid,.cta-banner{padding-left:20px;padding-right:20px}.about-hero,.story{grid-template-columns:1fr}.hero-img,.story-imgs{height:280px}.stats-strip{padding:36px 20px;grid-template-columns:repeat(2,1fr);gap:20px}.values-inner{padding:0 20px}.values-grid{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:repeat(2,1fr)}.press-inner{padding:0 20px}footer{padding:44px 20px 24px}.footer-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Style <span>It Up</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="shop.html?cat=shirts">Shirts</a></li>
+    <li><a href="shop.html?cat=sale">Sale 🔥</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="wishlist.html" class="nav-icon-btn">🤍 <span id="nav-wish-count" class="nav-badge">0</span></a>
+    <a href="account.html" class="nav-icon-btn">👤 Account</a>
+    <a href="cart.html" class="nav-icon-btn btn-cart-nav">🛒 Cart (<span id="nav-cart-count">0</span>)</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section>
+  <div class="about-hero">
+    <div class="fade-in">
+      <div class="hero-eyebrow">Our Story</div>
+      <h1 class="hero-title">Crafted for the<br/>Modern <em>Indian Man</em></h1>
+      <p class="hero-desc">Style It Up was born out of a simple belief — that every man deserves to look and feel exceptional without compromising on comfort or breaking the bank. We curate premium menswear that bridges the gap between high fashion and everyday wearability.</p>
+      <div class="hero-ctas">
+        <a href="shop.html" class="btn-primary">Shop the Collection</a>
+        <a href="contact.html" class="btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Style It Up" onerror="this.src='https://picsum.photos/seed/about1/800/600'"/>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item"><div class="stat-num">2019</div><div class="stat-lbl">Founded</div></div>
+  <div class="stat-item"><div class="stat-num">50K+</div><div class="stat-lbl">Happy Customers</div></div>
+  <div class="stat-item"><div class="stat-num">2,400+</div><div class="stat-lbl">Products</div></div>
+  <div class="stat-item"><div class="stat-num">180+</div><div class="stat-lbl">Brand Partners</div></div>
+</div>
+
+<!-- STORY -->
+<section>
+  <div class="story">
+    <div class="story-imgs">
+      <div class="story-img1"><img src="https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Our story" onerror="this.src='https://picsum.photos/seed/story1/700/560'"/></div>
+      <div class="story-img2"><img src="https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Our story 2" onerror="this.src='https://picsum.photos/seed/story2/500/400'"/></div>
+      <div class="story-badge"><span class="yr">5+</span><span class="since">Years of<br/>Style</span></div>
+    </div>
+    <div class="story-text">
+      <div class="section-label">How It Started</div>
+      <h2>From a Single Store to a Style Movement</h2>
+      <p>It started in 2019 with a small boutique in Hyderabad and a big dream — to make premium menswear accessible to every Indian man. Our founders, tired of choosing between quality and affordability, decided to build something different.</p>
+      <p>We partnered directly with manufacturers, cut out the middlemen, and passed the savings on to you. Today, Style It Up ships across India, with a catalogue spanning shirts, jackets, bottoms, and footwear — all handpicked for quality and style.</p>
+      <p>We believe style isn't a privilege — it's a right. And we're here to make sure every man in India can claim it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="values-inner">
+    <div class="values-header">
+      <div class="section-label">What Drives Us</div>
+      <h2>Our Core Values</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <div class="value-title">Quality First</div>
+        <div class="value-desc">Every product is handpicked and quality-checked before it reaches you. We work only with suppliers who meet our strict standards for fabric, construction, and finish.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💰</div>
+        <div class="value-title">Fair Pricing</div>
+        <div class="value-desc">By working directly with manufacturers and keeping our margins lean, we offer premium products at prices that don't make you wince. Great style shouldn't cost a fortune.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌱</div>
+        <div class="value-title">Sustainability</div>
+        <div class="value-desc">We're on a journey toward more sustainable fashion. From eco-friendly packaging to partnering with ethical factories, we're committed to doing better for the planet.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Customer First</div>
+        <div class="value-desc">Your satisfaction is everything. Easy returns, responsive support, and a shopping experience designed to make your life easier — not harder.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🇮🇳</div>
+        <div class="value-title">Made for India</div>
+        <div class="value-desc">We design for the Indian climate, body types, and lifestyle. Our collections are curated specifically for the modern Indian man — practical, stylish, and built to last.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">✨</div>
+        <div class="value-title">Inclusive Style</div>
+        <div class="value-desc">Style is for everyone. We offer a wide range of sizes and fits to ensure every man — regardless of shape or build — can find something that makes him feel great.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section>
+  <div class="team">
+    <div class="team-header">
+      <div class="section-label">The People Behind the Brand</div>
+      <h2>Meet the Team</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Arjun Mehta" onerror="this.src='https://picsum.photos/seed/team1/400/400'"/></div>
+        <div class="team-name">Arjun Mehta</div>
+        <div class="team-role">Co-Founder & CEO</div>
+        <div class="team-bio">10+ years in fashion retail. Passionate about making menswear accessible to every Indian man.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Kiran Reddy" onerror="this.src='https://picsum.photos/seed/team2/400/400'"/></div>
+        <div class="team-name">Kiran Reddy</div>
+        <div class="team-role">Co-Founder & CMO</div>
+        <div class="team-bio">Brand strategist and creative director. Built Style It Up's identity from the ground up.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.pexels.com/photos/769733/pexels-photo-769733.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Priya Sharma" onerror="this.src='https://picsum.photos/seed/team3/400/400'"/></div>
+        <div class="team-name">Priya Sharma</div>
+        <div class="team-role">Head of Design</div>
+        <div class="team-bio">Graduate of NIFT Mumbai. Leads our product design team with an eye for timeless style.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.pexels.com/photos/1192609/pexels-photo-1192609.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Rohan Das" onerror="this.src='https://picsum.photos/seed/team4/400/400'"/></div>
+        <div class="team-name">Rohan Das</div>
+        <div class="team-role">Head of Operations</div>
+        <div class="team-bio">Supply chain expert ensuring every order reaches you on time and in perfect condition.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="press">
+  <div class="press-inner">
+    <div class="press-label">As Featured In</div>
+    <div class="press-logos">
+      <span class="press-logo">VOGUE INDIA</span>
+      <span class="press-logo">GQ INDIA</span>
+      <span class="press-logo">BUSINESS INSIDER</span>
+      <span class="press-logo">ECONOMIC TIMES</span>
+      <span class="press-logo">MINT LOUNGE</span>
+      <span class="press-logo">YS STORIES</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="section-label">Join the Movement</div>
+  <h2>Ready to <em>Level Up</em><br/>Your Wardrobe?</h2>
+  <p>Thousands of Indian men already trust Style It Up for their everyday and occasion wear. It's your turn.</p>
+  <div class="ctas">
+    <a href="shop.html" class="btn-primary">Shop Now →</a>
+    <a href="contact.html" class="btn-ghost">Contact Us</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">Style <span>It Up</span></a>
+      <p>Premium menswear for the modern Indian man. Quality you can feel, style you can own.</p>
+      <div class="social-links"><a href="#">IG</a><a href="#">TW</a><a href="#">FB</a><a href="#">YT</a></div>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><ul>
+      <li><a href="shop.html">All Products</a></li><li><a href="shop.html?cat=shirts">Shirts</a></li>
+      <li><a href="shop.html?cat=jackets">Jackets</a></li><li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+      <li><a href="shop.html?cat=footwear">Footwear</a></li><li><a href="shop.html?cat=sale">Sale</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Help</h4><ul>
+      <li><a href="account.html">My Account</a></li><li><a href="cart.html">View Cart</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li><li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="about.html">About Us</a></li><li><a href="contact.html">Careers</a></li>
+      <li><a href="#">Privacy Policy</a></li><li><a href="#">Terms</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Style It Up. All rights reserved.</span>
+    <span>Made with ♥ in Hyderabad</span>
+  </div>
+</footer>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function getCart(){try{return JSON.parse(sessionStorage.getItem('siu_cart'))||[];}catch{return [];}}
+function getWish(){try{return JSON.parse(sessionStorage.getItem('siu_wish'))||[];}catch{return [];}}
+function updateNav(){
+  const cc=document.getElementById('nav-cart-count');
+  const wc=document.getElementById('nav-wish-count');
+  if(cc)cc.textContent=getCart().reduce((a,i)=>a+i.qty,0);
+  if(wc)wc.textContent=getWish().length;
+}
+updateNav();
+window.addEventListener('scroll',()=>{document.getElementById('back-top').classList.toggle('show',scrollY>400)});
+</script>
+</body>
+</html>
