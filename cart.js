@@ -210,17 +210,21 @@ function selectPayment(el) {
 
 /* ── PLACE ORDER ── */
 function placeOrder() {
-  const required = [
-    ['co-fn', 'first name'], ['co-ln', 'last name'],
-    ['co-em', 'email'],      ['co-ph', 'phone'],
-    ['co-ad', 'address'],    ['co-ci', 'city'],   ['co-pi', 'pincode']
-  ];
-  for (const [id, label] of required) {
-    if (!document.getElementById(id)?.value.trim()) {
-      siuToast('Please enter your ' + label, 'err');
-      return;
-    }
-  }
+  const orderId = 'SIU' + Date.now().toString().slice(-8);
+  document.getElementById('cart-section').innerHTML = `
+    <div class="order-success">
+      <div class="tick">🎉</div>
+      <h2>Order Placed!</h2>
+      <div class="order-id">Order #${orderId}</div>
+      <p>Thank you for shopping with Style It Up!<br/>
+         Your order will arrive in <strong>3–5 business days</strong>.<br/>
+         A confirmation has been sent to your email.</p>
+      <a href="shop.html" class="btn-primary" style="margin-right:12px">Continue Shopping</a>
+      <a href="account.html" class="btn-ghost" style="color:var(--black);border-color:rgba(0,0,0,.2)">My Account</a>
+    </div>`;
+  document.getElementById('order-summary').innerHTML = '';
+  siuClearCart();
+}
   const orderId = 'SIU' + Date.now().toString().slice(-8);
   document.getElementById('cart-section').innerHTML = `
     <div class="order-success">
