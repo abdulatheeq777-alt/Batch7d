@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart — Style It Up</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="cart.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="page-body">
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <a class="nav-logo" href="index.html">Style It Up</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="shop.html?cat=shirts">Shirts</a></li>
+      <li><a href="shop.html?cat=jackets">Jackets</a></li>
+      <li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+      <li><a href="shop.html?cat=sale">Sale 🔥</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="shop.html">🔍 Search</a>
+      <a href="wishlist.html">🤍 Saved <span id="nav-wish-count">0</span></a>
+      <a href="account.html">👤 Account</a>
+      <a href="cart.html" class="active">🛒 Cart (<span id="nav-cart-count">0</span>)</a>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HEADER ── -->
+  <section class="page-header">
+    <h1>Your Cart 🛒</h1>
+    <p class="breadcrumb"><a href="index.html">Home</a> › Cart</p>
+  </section>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="container">
+    <div class="cart-layout">
+
+      <!-- Left: cart items + coupon (rendered by JS) -->
+      <div id="cart-section" class="cart-section"></div>
+
+      <!-- Right: order summary (rendered by JS) -->
+      <aside id="order-summary" class="order-summary"></aside>
+
+    </div>
+  </main>
+
+  <!-- ── TOAST ── -->
+  <div id="siu-toast" class="siu-toast"></div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">Style It Up</a>
+        <p>Premium menswear for the modern Indian man. Quality you can feel, style you can own.</p>
+        <div class="footer-socials">
+          <a href="#">IG</a><a href="#">TW</a><a href="#">FB</a><a href="#">YT</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">New Arrivals</a></li>
+          <li><a href="shop.html?cat=shirts">Shirts</a></li>
+          <li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+          <li><a href="shop.html?cat=jackets">Jackets</a></li>
+          <li><a href="shop.html?cat=sale">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="account.html">My Account</a></li>
+          <li><a href="cart.html">Track Order</a></li>
+          <li><a href="contact.html">Returns</a></li>
+          <li><a href="contact.html">Size Guide</a></li>
+          <li><a href="contact.html">FAQs</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Sustainability</a></li>
+          <li><a href="about.html">Careers</a></li>
+          <li><a href="contact.html">Press</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Style It Up. All rights reserved. Made with ♥ in India</p>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ── -->
+  <script src="shared.js"></script>
+  <script src="cart.js"></script>
+
+</body>
+</html>
