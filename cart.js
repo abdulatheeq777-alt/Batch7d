@@ -163,17 +163,21 @@ function showCheckout() {
         <div class="form-group"><label>Last Name</label><input id="co-ln" placeholder="Sharma" value="${user?.lastName||''}"/></div>
       </div>
       <div class="form-group"><label>Email</label><input type="email" id="co-em" placeholder="rahul@email.com" value="${user?.email||''}"/></div>
-      <div class="form-group"><label>Phone</label><input type="tel" id="co-ph" placeholder="+91 98765 43210"/></div>
-      <div class="form-group"><label>Full Address</label><input id="co-ad" placeholder="Flat 12B, Raj Residency, MG Road"/></div>
+      <div class="form-group"><label>Phone</label><input type="tel" id="co-ph" placeholder="+91 98765 43210" value="${user?.phone||''}"/></div>
+      <div class="form-group"><label>Full Address</label><input id="co-ad" placeholder="Flat 12B, Raj Residency, MG Road" value="${user?.address||''}"/></div>
       <div class="form-row">
-        <div class="form-group"><label>City</label><input id="co-ci" placeholder="Hyderabad"/></div>
-        <div class="form-group"><label>Pincode</label><input id="co-pi" placeholder="500034"/></div>
+        <div class="form-group"><label>City</label><input id="co-ci" placeholder="Hyderabad" value="${user?.city||''}"/></div>
+        <div class="form-group"><label>Pincode</label><input id="co-pi" placeholder="500034" value="${user?.pincode||''}"/></div>
       </div>
       <div class="form-group"><label>State</label>
         <select id="co-st">
-          <option>Telangana</option><option>Andhra Pradesh</option>
-          <option>Maharashtra</option><option>Karnataka</option>
-          <option>Tamil Nadu</option><option>Delhi</option><option>Other</option>
+          <option ${user?.state==='Telangana'?'selected':''}>Telangana</option>
+          <option ${user?.state==='Andhra Pradesh'?'selected':''}>Andhra Pradesh</option>
+          <option ${user?.state==='Maharashtra'?'selected':''}>Maharashtra</option>
+          <option ${user?.state==='Karnataka'?'selected':''}>Karnataka</option>
+          <option ${user?.state==='Tamil Nadu'?'selected':''}>Tamil Nadu</option>
+          <option ${user?.state==='Delhi'?'selected':''}>Delhi</option>
+          <option ${user?.state==='Other'?'selected':''}>Other</option>
         </select>
       </div>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin:24px 0 16px;color:var(--black)">Payment Method</h3>
@@ -210,6 +214,19 @@ function selectPayment(el) {
 
 /* ── PLACE ORDER ── */
 function placeOrder() {
+  // Save delivery details so they persist for next time
+  const user = {
+    firstName: document.getElementById('co-fn')?.value || '',
+    lastName:  document.getElementById('co-ln')?.value || '',
+    email:     document.getElementById('co-em')?.value || '',
+    phone:     document.getElementById('co-ph')?.value || '',
+    address:   document.getElementById('co-ad')?.value || '',
+    city:      document.getElementById('co-ci')?.value || '',
+    pincode:   document.getElementById('co-pi')?.value || '',
+    state:     document.getElementById('co-st')?.value || '',
+  };
+  siuSaveUser(user);
+
   const orderId = 'SIU' + Date.now().toString().slice(-8);
   document.getElementById('cart-section').innerHTML = `
     <div class="order-success">
@@ -225,7 +242,6 @@ function placeOrder() {
   document.getElementById('order-summary').innerHTML = '';
   siuClearCart();
 }
-
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', renderCart);
