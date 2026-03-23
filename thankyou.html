@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You — Style It Up</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .thankyou-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+    .thankyou-card {
+      text-align: center;
+      max-width: 520px;
+      width: 100%;
+    }
+    .ty-icon {
+      width: 80px;
+      height: 80px;
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 36px;
+      animation: popIn 0.5s ease forwards;
+    }
+    @keyframes popIn {
+      0%   { transform: scale(0.5); opacity: 0; }
+      80%  { transform: scale(1.1); }
+      100% { transform: scale(1);   opacity: 1; }
+    }
+    .ty-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .ty-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .ty-title em { font-style: italic; color: #c8a96e; }
+    .ty-divider {
+      width: 60px;
+      height: 2px;
+      background: #c8a96e;
+      margin: 0 auto 28px;
+      border-radius: 2px;
+    }
+    .ty-name {
+      font-size: 18px;
+      color: #aaa;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .ty-name span { color: #fff; font-weight: 600; }
+    .ty-perks {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .ty-perk {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 30px;
+      padding: 8px 18px;
+      font-size: 13px;
+      color: #ccc;
+    }
+    .ty-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .ty-btn-primary {
+      background: #fff;
+      color: #111;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .ty-btn-primary:hover { opacity: 0.88; }
+    .ty-btn-ghost {
+      background: transparent;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .ty-btn-ghost:hover { border-color: #666; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Style <span>It Up</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="shop.html?cat=shirts">Shirts</a></li>
+    <li><a href="shop.html?cat=jackets">Jackets</a></li>
+    <li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+    <li><a href="shop.html?cat=sale">Sale 🔥</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="shop.html" class="nav-icon-btn">🔍 Search</a>
+    <a href="wishlist.html" class="nav-icon-btn">🤍 Saved</a>
+    <a href="account.html" class="nav-icon-btn">👤 Account</a>
+    <a href="cart.html" class="nav-icon-btn btn-cart-nav">
+      🛒 Cart (<span id="nav-cart-count">0</span>)
+    </a>
+  </div>
+</nav>
+
+<div class="thankyou-wrap">
+  <div class="thankyou-card">
+    <div class="ty-icon">🎉</div>
+    <div class="ty-label">You're in the club</div>
+    <h1 class="ty-title">Thanks for<br/>Joining <em>Us!</em></h1>
+    <div class="ty-divider"></div>
+    <p class="ty-name">
+      Welcome, <span id="ty-username">friend</span>!<br/>
+      You'll be the first to hear about exclusive drops,<br/>member deals, and new arrivals.
+    </p>
+    <div class="ty-perks">
+      <div class="ty-perk">✦ Exclusive Drops</div>
+      <div class="ty-perk">✦ Members Get 15% Off</div>
+      <div class="ty-perk">✦ Early Access</div>
+    </div>
+    <div class="ty-btns">
+      <a href="shop.html" class="ty-btn-primary">Shop Now</a>
+      <a href="index.html" class="ty-btn-ghost">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  const name = localStorage.getItem('subscriber_name');
+  if (name) {
+    document.getElementById('ty-username').textContent = name;
+    localStorage.removeItem('subscriber_name');
+  }
+</script>
+
+</body>
+</html>
