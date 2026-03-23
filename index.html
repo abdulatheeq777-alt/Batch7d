@@ -14,35 +14,80 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-WWEGL6GJ3Q');
 </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Style It Up — Premium Men's Clothing</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-
-  <!-- Shared styles (nav, footer, buttons, product cards, toasts) -->
   <link rel="stylesheet" href="shared.css"/>
-
-  <!-- Homepage-specific styles -->
   <link rel="stylesheet" href="index.css"/>
+
+  <style>
+    .nl-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .nl-form input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border 0.2s, background 0.2s;
+      box-sizing: border-box;
+    }
+    .nl-form input::placeholder { color: rgba(255,255,255,0.5); }
+    .nl-form input:focus {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.15);
+    }
+    .nl-form button {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: none;
+      background: #fff;
+      color: #111;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      letter-spacing: 0.3px;
+    }
+    .nl-form button:hover  { opacity: 0.9; }
+    .nl-form button:active { transform: scale(0.98); }
+    .nl-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+    #nl-msg {
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+      min-height: 20px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    #nl-msg.success { color: #a8f0c6; }
+    #nl-msg.error   { color: #ffaaaa; }
+  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MQSH7WT"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
-<!-- TOAST CONTAINER -->
 <div id="toast-container"></div>
 
-<!-- NAVIGATION -->
 <nav>
   <a href="index.html" class="nav-logo">Style <span>It Up</span></a>
-
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="shop.html">Shop</a></li>
@@ -53,7 +98,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-
   <div class="nav-right">
     <a href="shop.html" class="nav-icon-btn">🔍 Search</a>
     <a href="wishlist.html" class="nav-icon-btn">
@@ -67,7 +111,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <span class="hero-tag">★ SS 2025 Collection</span>
@@ -83,21 +126,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#trending" class="btn-ghost">Trending Now</a>
     </div>
     <div class="hero-stats">
-      <div>
-        <div class="stat-val">2.4K+</div>
-        <div class="stat-label">Products</div>
-      </div>
-      <div>
-        <div class="stat-val">180+</div>
-        <div class="stat-label">Brands</div>
-      </div>
-      <div>
-        <div class="stat-val">50K+</div>
-        <div class="stat-label">Customers</div>
-      </div>
+      <div><div class="stat-val">2.4K+</div><div class="stat-label">Products</div></div>
+      <div><div class="stat-val">180+</div><div class="stat-label">Brands</div></div>
+      <div><div class="stat-val">50K+</div><div class="stat-label">Customers</div></div>
     </div>
   </div>
-
   <div class="hero-right">
     <img
       src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=900"
@@ -111,7 +144,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- MARQUEE STRIP -->
 <div class="marquee-wrap">
   <div class="marquee-inner">
     <span class="marquee-item">New Arrivals <span class="marquee-dot">✦</span></span>
@@ -129,7 +161,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- SHOP BY CATEGORY -->
 <section class="section">
   <div class="section-header">
     <div>
@@ -138,67 +169,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <a href="shop.html" class="see-all">View All →</a>
   </div>
-
   <div class="cat-grid">
     <div class="cat-card" onclick="location.href='shop.html?cat=shirts'">
-      <img
-        src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=600"
-        alt="Shirts"
-        onerror="this.onerror=null;this.src='https://picsum.photos/seed/catshirt/600/800'"
-        loading="lazy"
-      />
+      <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Shirts" onerror="this.onerror=null;this.src='https://picsum.photos/seed/catshirt/600/800'" loading="lazy"/>
       <div class="cat-arrow">↗</div>
-      <div class="cat-info">
-        <div class="cat-name">Shirts</div>
-        <div class="cat-count">320+ styles</div>
-      </div>
+      <div class="cat-info"><div class="cat-name">Shirts</div><div class="cat-count">320+ styles</div></div>
     </div>
-
     <div class="cat-card" onclick="location.href='shop.html?cat=jackets'">
-      <img
-        src="https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=600"
-        alt="Jackets"
-        onerror="this.onerror=null;this.src='https://picsum.photos/seed/catjacket/600/800'"
-        loading="lazy"
-      />
+      <img src="https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Jackets" onerror="this.onerror=null;this.src='https://picsum.photos/seed/catjacket/600/800'" loading="lazy"/>
       <div class="cat-arrow">↗</div>
-      <div class="cat-info">
-        <div class="cat-name">Jackets</div>
-        <div class="cat-count">180+ styles</div>
-      </div>
+      <div class="cat-info"><div class="cat-name">Jackets</div><div class="cat-count">180+ styles</div></div>
     </div>
-
     <div class="cat-card" onclick="location.href='shop.html?cat=bottoms'">
-      <img
-        src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=600"
-        alt="Bottoms"
-        onerror="this.onerror=null;this.src='https://picsum.photos/seed/catbottom/600/800'"
-        loading="lazy"
-      />
+      <img src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bottoms" onerror="this.onerror=null;this.src='https://picsum.photos/seed/catbottom/600/800'" loading="lazy"/>
       <div class="cat-arrow">↗</div>
-      <div class="cat-info">
-        <div class="cat-name">Jeans &amp; Trousers</div>
-        <div class="cat-count">260+ styles</div>
-      </div>
+      <div class="cat-info"><div class="cat-name">Jeans &amp; Trousers</div><div class="cat-count">260+ styles</div></div>
     </div>
-
     <div class="cat-card" onclick="location.href='shop.html?cat=footwear'">
-      <img
-        src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=600"
-        alt="Footwear"
-        onerror="this.onerror=null;this.src='https://picsum.photos/seed/catfoot/600/800'"
-        loading="lazy"
-      />
+      <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Footwear" onerror="this.onerror=null;this.src='https://picsum.photos/seed/catfoot/600/800'" loading="lazy"/>
       <div class="cat-arrow">↗</div>
-      <div class="cat-info">
-        <div class="cat-name">Footwear</div>
-        <div class="cat-count">140+ styles</div>
-      </div>
+      <div class="cat-info"><div class="cat-name">Footwear</div><div class="cat-count">140+ styles</div></div>
     </div>
   </div>
 </section>
 
-<!-- FEATURED PRODUCTS -->
 <section class="section products-section" id="featured">
   <div class="section-header">
     <div>
@@ -207,7 +201,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <a href="shop.html" class="see-all">View All →</a>
   </div>
-
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
     <button class="filter-btn" onclick="filterProducts('shirts', this)">Shirts</button>
@@ -216,11 +209,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="filter-btn" onclick="filterProducts('footwear', this)">Footwear</button>
     <button class="filter-btn" onclick="filterProducts('sale', this)">Sale 🔥</button>
   </div>
-
   <div class="products-grid" id="products-grid"></div>
 </section>
 
-<!-- PROMO BANNER -->
 <div class="promo-banner">
   <div class="promo-left">
     <div class="section-label">Limited Time</div>
@@ -245,7 +236,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- TRENDING NOW -->
 <section class="section" id="trending">
   <div class="section-header">
     <div>
@@ -254,11 +244,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <a href="shop.html" class="see-all">View All →</a>
   </div>
-
   <div class="trending-grid" id="trending-grid"></div>
 </section>
 
-<!-- NEWSLETTER -->
+<!-- NEWSLETTER — updated with name + phone fields -->
 <section class="newsletter">
   <div class="section-label">Stay Updated</div>
   <h2 class="newsletter-title">Join the Style It Up Club</h2>
@@ -266,28 +255,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     Exclusive drops, member-only deals, and style inspo straight to your inbox.
   </p>
   <div class="nl-form">
-    <input type="text" id="nl-name" placeholder="Your name" />
-    <input type="tel" id="nl-phone" placeholder="Your phone number" />
-    <button onclick="subscribeNewsletter()">Subscribe</button>
+    <input type="text" id="nl-name" placeholder="Your name" autocomplete="name"/>
+    <input type="tel" id="nl-phone" placeholder="Your phone number" autocomplete="tel"/>
+    <button id="nl-btn" onclick="subscribeNewsletter()">Subscribe</button>
+    <p id="nl-msg"></p>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
-
       <div class="footer-brand">
         <a href="index.html" class="footer-logo">Style <span>It Up</span></a>
         <p>Premium menswear for the modern Indian man. Quality you can feel, style you can own.</p>
         <div class="social-links">
-          <a href="#">IG</a>
-          <a href="#">TW</a>
-          <a href="#">FB</a>
-          <a href="#">YT</a>
+          <a href="#">IG</a><a href="#">TW</a><a href="#">FB</a><a href="#">YT</a>
         </div>
       </div>
-
       <div class="footer-col">
         <h4>Shop</h4>
         <ul>
@@ -299,7 +283,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="shop.html?cat=sale">Sale</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Help</h4>
         <ul>
@@ -311,7 +294,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
@@ -323,9 +305,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="#">Terms</a></li>
         </ul>
       </div>
-
     </div>
-
     <div class="footer-bottom">
       <span>© 2025 Style It Up. All rights reserved.</span>
       <span>Made with ♥ in India</span>
@@ -333,12 +313,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<!-- Back to Top -->
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<!-- Scripts — shared first, then page-specific -->
 <script src="shared.js"></script>
 <script src="index.js"></script>
+
+<script>
+  function subscribeNewsletter() {
+    const name  = document.getElementById('nl-name').value.trim();
+    const phone = document.getElementById('nl-phone').value.trim();
+    const msg   = document.getElementById('nl-msg');
+    const btn   = document.getElementById('nl-btn');
+
+    msg.className = '';
+    msg.textContent = '';
+
+    if (!name) {
+      msg.className = 'error';
+      msg.textContent = 'Please enter your name.';
+      return;
+    }
+    if (!phone) {
+      msg.className = 'error';
+      msg.textContent = 'Please enter your phone number.';
+      return;
+    }
+    if (!/^[0-9\s\+\-]{7,15}$/.test(phone)) {
+      msg.className = 'error';
+      msg.textContent = 'Please enter a valid phone number.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Subscribed!';
+    msg.className = 'success';
+    msg.textContent = 'Thanks, ' + name + '! You\'re on the list 🎉';
+
+    document.getElementById('nl-name').value  = '';
+    document.getElementById('nl-phone').value = '';
+  }
+</script>
 
 </body>
 </html>
