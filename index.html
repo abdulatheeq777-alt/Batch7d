@@ -75,8 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       min-height: 20px;
       font-family: 'DM Sans', sans-serif;
     }
-    #nl-msg.success { color: #a8f0c6; }
-    #nl-msg.error   { color: #ffaaaa; }
+    #nl-msg.error { color: #ffaaaa; }
   </style>
 </head>
 <body>
@@ -247,7 +246,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="trending-grid" id="trending-grid"></div>
 </section>
 
-<!-- NEWSLETTER — updated with name + phone fields -->
+<!-- NEWSLETTER -->
 <section class="newsletter">
   <div class="section-label">Stay Updated</div>
   <h2 class="newsletter-title">Join the Style It Up Club</h2>
@@ -345,12 +344,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     btn.disabled = true;
-    btn.textContent = 'Subscribed!';
-    msg.className = 'success';
-    msg.textContent = 'Thanks, ' + name + '! You\'re on the list 🎉';
+    btn.textContent = 'Redirecting...';
 
-    document.getElementById('nl-name').value  = '';
-    document.getElementById('nl-phone').value = '';
+    // Save name for thank you page
+    localStorage.setItem('subscriber_name', name);
+
+    // Redirect to thank you page
+    setTimeout(function() {
+      window.location.href = 'thankyou.html';
+    }, 800);
   }
 </script>
 
